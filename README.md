@@ -1,2 +1,2 @@
-# Icoding club
-This is my code in Coding Club
+# Icoding Project
+This is... uuhhh Icoding project
