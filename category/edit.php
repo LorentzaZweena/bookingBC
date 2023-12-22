@@ -1,3 +1,22 @@
+<?php
+include_once("../config.php");
+session_start();
+
+    $id = $_GET['id'];
+    $category = mysqli_query($connect, "INSERT INTO categories WHERE id='$id'");
+
+    if(isset($_POST["submit"])){
+        $name = $_POST["name"];
+        $action = mysqli_query($connect, "INSERT INTO categories VALUES(NULL, '$name')");
+        if($action){
+            header("Location: ".$baseURL."/category/index.php");
+            exit();
+        } else {
+            echo "<script>alert('gagal')</script>";
+        }
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <?php  
