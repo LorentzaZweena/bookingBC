@@ -1,3 +1,9 @@
+<?php
+  $uri_path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+  $uri_segments = explode('/', $uri_path);
+  $active_menu = $uri_segments[2];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -135,7 +141,7 @@
           <div class="navbar">
             <div class="container-xl">
               <ul class="navbar-nav">
-                <li class="nav-item">
+                <li class="nav-item <?= ($active_menu == 'dashboard.php') ? 'active' : ''?> ">
                   <a class="nav-link" href="<?php echo $baseURL; ?>/dashboard.php" >
                     <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
                       <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l-2 0l9 -9l9 9l-2 0" /><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" /><path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" /></svg>
@@ -146,7 +152,7 @@
                   </a>
                 </li>
                 
-                <li class="nav-item">
+                <li class="nav-item <?= ($active_menu == 'category') ? 'active' : ''?>">
                   <a class="nav-link" href="<?php echo $baseURL; ?>/category/index.php" >
                     <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/checkbox -->
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-category" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 4h6v6h-6z" /><path d="M14 4h6v6h-6z" /><path d="M4 14h6v6h-6z" /><path d="M17 17m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" /></svg>
@@ -156,7 +162,7 @@
                     </span>
                   </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" <?= ($active_menu == 'product.php') ? 'active' : ''?>>
                   <a class="nav-link" href="<?php echo $baseURL; ?>/product/index.php" >
                     <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/checkbox -->
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-burger" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 15h16a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z" /><path d="M12 4c3.783 0 6.953 2.133 7.786 5h-15.572c.833 -2.867 4.003 -5 7.786 -5z" /><path d="M5 12h14" /></svg>
@@ -166,7 +172,7 @@
                     </span>
                   </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" <?= ($active_menu == 'booking.php') ? 'active' : ''?>>
                   <a class="nav-link" href="<?php echo $baseURL; ?>/booking/index.php" >
                     <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/checkbox -->
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-book-2" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M19 4v16h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12z" /><path d="M19 16h-12a2 2 0 0 0 -2 2" /><path d="M9 8h6" /></svg>
@@ -176,7 +182,7 @@
                     </span>
                   </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" <?= ($active_menu == 'user.php') ? 'active' : ''?>>
                   <a class="nav-link" href="<?php echo $baseURL; ?>/user/index.php" >
                     <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/checkbox -->
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" /><path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" /></svg>
@@ -186,7 +192,7 @@
                     </span>
                   </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" <?= ($active_menu == 'checkout.php') ? 'active' : ''?>>
                   <a class="nav-link" href="<?php echo $baseURL; ?>/checkout/index.php" >
                     <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/checkbox -->
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-checks" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M7 12l5 5l10 -10" /><path d="M2 12l5 5m5 -5l5 -5" /></svg>
@@ -196,7 +202,7 @@
                     </span>
                   </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" <?= ($active_menu == 'history.php') ? 'active' : ''?>>
                   <a class="nav-link" href="<?php echo $baseURL; ?>/history/index.php" >
                     <span class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/checkbox -->
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-history-toggle" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 20.777a8.942 8.942 0 0 1 -2.48 -.969" /><path d="M14 3.223a9.003 9.003 0 0 1 0 17.554" /><path d="M4.579 17.093a8.961 8.961 0 0 1 -1.227 -2.592" /><path d="M3.124 10.5c.16 -.95 .468 -1.85 .9 -2.675l.169 -.305" /><path d="M6.907 4.579a8.954 8.954 0 0 1 3.093 -1.356" /><path d="M12 8v4l3 3" /></svg>
