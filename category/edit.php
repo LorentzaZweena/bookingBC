@@ -3,11 +3,12 @@ include_once("../config.php");
 session_start();
 
     $id = $_GET['id'];
-    $category = mysqli_query($connect, "INSERT INTO categories WHERE id='$id'");
+    $category = mysqli_query($connect, "SELECT * from categories WHERE id='$id'");
+    $category = mysqli_fetch_array($category);
 
     if(isset($_POST["submit"])){
         $name = $_POST["name"];
-        $action = mysqli_query($connect, "INSERT INTO categories VALUES(NULL, '$name')");
+        $action = mysqli_query($connect, "UPDATE categories SET name='$name' WHERE id='$id'");
         if($action){
             header("Location: ".$baseURL."/category/index.php");
             exit();
@@ -19,10 +20,6 @@ session_start();
 
 <!DOCTYPE html>
 <html lang="en">
-<?php  
-  include_once("../config.php");
-  session_start();
-?>
 
   <?php 
   include_once($rootURL."/layout/header.php");
@@ -47,43 +44,24 @@ session_start();
         <!-- Page body -->
         <div class="page-body">
           <div class="container-xl">
-            <div class="card">
-              <div class="card-body">
-                <div id="table-default" class="table-responsive">
-                  <table class="table">
-                    <thead>
-                      <tr>
-                        <th><button class="table-sort" data-sort="sort-no">No</button></th>
-                        <th><button class="table-sort" data-sort="sort-name">Name</button></th>
-                        <th><button class="table-sort" data-sort="sort-action">Action</button></th>
-              
-                      </tr>
-                    </thead>
-                    <tbody class="table-tbody">
-                      <?php
-                        $data = mysqli_query($connect, "SELECT * from categories ORDER BY name ASC");
-                        $no = 1;
-
-                        while($category = mysqli_fetch_array($data)) {
-                      ?>
-                      <tr>
-                        <td class="sort-no"><?= $no++ ?></td>
-                        <td class="sort-name">Snack</td>
-                        <td class="sort-action">
-                          <div class="btn-list flex-nowrap">
-                            <a href="<?php echo $baseURL; ?>/category/edit/edit.php?id=<?= $category["id"] ?>"class="btn btn-info">Edit</a>
-                            <a href="<?php echo $baseURL; ?>/category/edit/delete.php" class="btn btn-danger">Delete</a>
-                          </div>
-                        </td>
-                        </tr>
-                        <?php } ?>
-                       
-                      </tr>
-                    </tbody>
-                  </table>
+            <form class="card" method="post">
+                <div class="card-header">
+                  <h3 class="card-title">Basic form</h3>
                 </div>
-              </div>
-            </div>
+                <div class="card-body">
+                  <div class="mb-3">
+                    <label class="form-label required">Category name</label>
+                    <div>
+                      <input type="text" name="name" value="<?= $category["name"]; ?>" class="form-control" aria-describedby="emailHelp" placeholder="Enter Category" >
+                    
+                    </div>
+                  </div>
+                  
+                </div>
+                <div class="card-footer text-end">
+                  <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+                </div>
+              </form>
           </div>
         </div>
         

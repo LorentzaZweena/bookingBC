@@ -47,7 +47,7 @@ session_start();
                   <div class="mb-3">
                     <label class="form-label required">Category name</label>
                     <div>
-                      <input type="text" name="name" class="form-control" aria-describedby="emailHelp" placeholder="Enter Category">
+                      <input type="text" name="name"  class="form-control" aria-describedby="emailHelp" placeholder="Enter Category">
                     
                     </div>
                   </div>

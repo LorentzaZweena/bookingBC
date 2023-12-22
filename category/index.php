@@ -49,11 +49,11 @@
                       ?>
                       <tr>
                         <td class="sort-no"><?= $no++ ?></td>
-                        <td class="sort-name">Snack</td>
+                        <td class="sort-name"><?= $category["name"]; ?></td>
                         <td class="sort-action">
                           <div class="btn-list flex-nowrap">
-                            <a href="<?php echo $baseURL; ?>/category/edit/edit.php?id=<?= $category["id"] ?>"class="btn btn-info">Edit</a>
-                            <a href="<?php echo $baseURL; ?>/category/edit/delete.php" class="btn btn-danger">Delete</a>
+                            <a href="<?php echo $baseURL; ?>/category/edit.php?id=<?= $category["id"] ?>" class="btn btn-info">Edit</a>
+                            <a href="<?php echo $baseURL; ?>/category/delete.php?id=<?= $category["id"] ?>" class="btn btn-danger">Delete</a>
                           </div>
                         </td>
                         </tr>
